@@ -16,14 +16,23 @@ connection = mysql.connector.connect(
 
 cursor = connection.cursor()
 
-data = get_temperature_data("Salt Lake City",40.4000,-111.8505)
+cities = [
+    ["Salt Lake City", 40.4000, -111.8505],
+    ["Kamas", 40.640216, -111.280745],
+    ["Mirror Lake", 40.701123, -110.887579],
+    ["Lucin", 41.346238, -113.905283],
+    ["Brian Head", 37.692681, -112.850196]
+]
+
+
 
 insert_query = """
     INSERT INTO temperature(city_name, latitude, longitude, curr_temperature)
     VALUES (%s, %s, %s, %s)
 """
 
-cursor.execute(insert_query, data)
+for data in cities:
+    cursor.execute(insert_query, get_temperature_data(data[0], data[1], data[2]))
 connection.commit()
 
 print(f"{cursor.rowcount} rows inserted.")
