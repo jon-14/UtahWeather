@@ -19,5 +19,3 @@ def get_temperature_data(location_name, latitude: float, longitude:float):
     return [location_name, latitude, longitude, temperature]
 
 response = get_temperature_data("Salt Lake City",40.4000,-111.8505)
-#temperature = response['current']['temperature_2m']
-#print(temperature)
