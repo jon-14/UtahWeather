@@ -3,10 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandasql as ps
 import mysql.connector
+import database_connection as dbc
 
 # Get Mirror Lake temperature data from SQL table
-sql_query = "SELECT city_name AS location, curr_temperature AS temperature_F, timestamp AS time FROM temperature WHERE city_name = 'Mirror Lake' ORDER BY timestamp DESC;"
+weather_data_connection = dbc.DatabaseConnection("localhost", "root", "jonnyboi", "UtahWeather")
 
 
-
-print(sql_query)

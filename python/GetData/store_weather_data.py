@@ -1,4 +1,3 @@
-#!/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
 import mysql.connector
 from get_weather_data import get_temperature_data
 import os
