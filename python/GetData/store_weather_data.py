@@ -13,6 +13,7 @@ def schedule_data_upload():
     db_password = os.getenv('DB_PASSWORD')
     db_name = os.getenv('DB_NAME')
 
+    # Connect to database
     connection = mysql.connector.connect(
         host = db_host,
         user = db_user,
