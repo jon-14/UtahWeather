@@ -10,36 +10,34 @@ class DatabaseConnection:
             password = db_password,
             database = db_name
         )
-        self.cursor = self.connection.cursor()
     
-    """
-    select_rows
-    Parameters: 
-        query (string)
-    Return: 
-        cursor object containing query results.
-    """
+
+    # Returns cursor object containing query results.
     def select_rows(self, query: str):
+        self.cursor = self.connection.cursor()
+        result_set = []
         try:
             self.cursor.execute(query)
-            return self.cursor
+            results = self.cursor
+            for x in results:
+                result_set.append(x)
+            self.cursor.close()
+            return result_set
         except Exception as e:
             print(f"Error in query: {e}")
+            self.cursor.close()
             return
     
-    """
-    insert_rows
-    Parameters: 
-        table_name          (name of the table)
-        column_names        (1D array containing column names)
-        vals_to_insert      (1D array containing values of one row)
-    Return:
-    """
+
+    # Inserts one row into the specified table and column values.
+    # cols_to_insert: array containing column names.
+    # vals_to_insert: array containing values to insert.
     def insert_rows(self, table_name, cols_to_insert, vals_to_insert):
         if cols_to_insert.len != vals_to_insert.len:
             print("Error: Column count and item count need to match.")
             return
         else:
+            self.cursor = self.connection.cursor()
             col_string = ""
             val_string = ""
             for x in cols_to_insert:
@@ -53,9 +51,11 @@ class DatabaseConnection:
             try:
                 self.cursor.execute(query)
                 print(f"{self.cursor.rowcount} rows inserted.")
+                self.cursor.close()
                 return
             except Exception as e:
                 print(f"Error in query: {e}")
+                self.cursor.close()
                 return
 
 
