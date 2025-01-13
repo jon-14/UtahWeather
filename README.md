@@ -1,5 +1,5 @@
 # Weather Data Analysis - Personal Project
-<p><strong>Current question:</strong> Is there a correlation between change in temperature dtemp/dt (degrees Fahrenheit per hour) and elevation?</p>
+<p><strong>Current objective:</strong>Collect and analyze data showing a correlation between change in temperature dtemp/dt (degrees Fahrenheit per hour) and elevation.</p>
 
 <p>Data Sources</p>
 <ul>
