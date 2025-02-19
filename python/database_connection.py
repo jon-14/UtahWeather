@@ -1,6 +1,8 @@
 import mysql.connector
 import os
 
+# @TODO: implement this in store_weather_data.py
+
 # Class for handling database connection, querying, and inserting values.
 class DatabaseConnection:
     def __init__(self, db_host: str, db_user: str, db_password: str, db_name: str):
